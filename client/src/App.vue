@@ -56,5 +56,9 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    border: solid 5px;
+    display: flex;
+    flex-flow: column wrap;
+
   }
 </style>

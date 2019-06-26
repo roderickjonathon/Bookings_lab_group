@@ -30,7 +30,7 @@ export default {
     return {
       name: "",
       email: "",
-      checkedIn: false   
+      checkedIn: false
     }
   },
 
@@ -54,4 +54,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#form {
+  margin: 2vh;
+  border: solid 5px;
+  border-color: lightblue;
+  border-radius: 15px;
+}
 </style>

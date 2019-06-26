@@ -2,11 +2,12 @@
   <div id="grid">
 
 
-    <div  v-for="(booking, index) in bookings" >
-      {{booking.name}}
-      {{booking.email}}
+    <div id="single-booking"  v-for="(booking, index) in bookings" >
+    <h2>  Name: {{booking.name}} </h2>
+    <p>  Email: {{booking.email}} </p>
 
-      <input type="checkbox" name="" :checked="booking.checkedIn" v-model='booking.checkedIn' @change="handleChange(booking)">
+      <label for="checkbox">Checked in:</label>
+      <input type="checkbox" name="checkbox" :checked="booking.checkedIn" v-model='booking.checkedIn' @change="handleChange(booking)">
       <button type="button" name="button" v-on:click="handleDelete(booking._id)" >Delete Booking</button>
     </div>
   </div>
@@ -55,4 +56,20 @@ export default {
 
 
 <style lang="css" scoped>
+
+#grid {
+  border: solid 3px;
+  border-radius: 15px;
+  padding: 2vh;
+  margin: 2vh;
+  flex-flow: row wrap;
+}
+
+#single-booking {
+  flex-flow: row wrap;
+  border: solid 3px;
+  border-color: #1be;
+
+}
+
 </style>
