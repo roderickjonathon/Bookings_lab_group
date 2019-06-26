@@ -9,6 +9,7 @@
 import BookingsGrid from './components/BookingsGrid.vue'
 import BookingsService from '@/services/BookingsService.js'
 import BookingsForm from '@/components/BookingsForm.vue'
+import {eventBus}  from '@/main.js'
 
 export default {
   name: 'app',
@@ -21,7 +22,18 @@ export default {
   mounted(){
     BookingsService.getBookings()
     .then(bookings => this.bookings = bookings)
+
+    eventBus.$on('booking-added', booking =>
+    this.bookings.push(booking))
+
+    eventBus.$on('booking-deleted', id => {
+      const index = this.bookings.findIndex(booking => booking._id === id)
+      this.bookings.splice(index, 1)
+    })
+
   },
+
+
   components: {
 
     'bookings-grid': BookingsGrid,
@@ -32,12 +44,12 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
